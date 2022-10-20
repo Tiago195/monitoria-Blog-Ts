@@ -1,4 +1,5 @@
-require('dotenv').config();
+import 'dotenv/config';
+import { Options } from 'sequelize';
 
 const environment = process.env.NODE_ENV || 'test';
 
@@ -8,12 +9,10 @@ const suffix = {
   test: '-test',
 };
 
-const options = {
+const options: Options = {
   host: process.env.MYSQL_HOST || 'localhost',
-  port: process.env.MYSQL_PORT || '3306',
-  database: `${process.env.MYSQL_DB_NAME || 'blogs-api'}${
-    suffix[environment as keyof typeof suffix] || suffix.test
-  }`,
+  port: Number(process.env.MYSQL_PORT) || 3306,
+  database: `${process.env.MYSQL_DB_NAME || 'blogs-api'}${suffix[environment as keyof typeof suffix] || suffix.test}`,
   username: process.env.MYSQL_USER || 'root',
   password: process.env.MYSQL_PASSWORD || '1234',
   dialect: 'mysql',

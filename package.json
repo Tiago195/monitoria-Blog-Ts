@@ -5,6 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "ts-node src/server.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "db:drop": "sequelize-cli db:drop",
     "db:create": "sequelize db:create",
     "db:migrate": "sequelize-cli db:migrate",
